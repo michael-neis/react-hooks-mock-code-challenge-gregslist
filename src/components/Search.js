@@ -1,22 +1,21 @@
 import React from "react";
 
-function Search() {
-  function handleSubmit(e) {
-    e.preventDefault();
-    console.log("submitted");
-  }
+function Search({ handleSearch, searchText, handleSearchSubmit, resetButton, handleReset }) {
 
   return (
-    <form className="searchbar" onSubmit={handleSubmit}>
+    <>
+    <form className="searchbar" onSubmit={handleSearchSubmit}>
       <input
         type="text"
         id="search"
         placeholder="search free stuff"
-        value={""}
-        onChange={(e) => console.log(e.target.value)}
+        value={searchText}
+        onChange={handleSearch}
       />
       <button type="submit">🔍</button>
     </form>
+    {resetButton ? <button onClick={handleReset}>Run it back</button> : null}
+    </>
   );
 }
 
